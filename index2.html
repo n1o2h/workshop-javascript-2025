@@ -382,7 +382,7 @@
         let userStories = [];
         let boardStories = [];
         let storyIdCounter = 1;
-        let index = 0;
+        let indexCollaborateur = 0;
 
 
 
@@ -453,7 +453,7 @@
                 coll.style.padding = "8px 15px";
                 coll.style.borderRadius = "20px";
                 coll.style.margin = "5px";
-                coll.innerText = collaborators[index];
+                coll.innerText = collaborators[indexCollaborateur];
                 collaboratorsList.appendChild(coll);
                 // console.log(collaboratorsList);
             // });
@@ -469,8 +469,8 @@
         function updateAssigneeSelect() {
             // À IMPLÉMENTER
             var storyAssignee = document.getElementById('storyAssignee');
-            
-                storyAssignee.innerHTML += `<option value="${index}">${collaborators[index]}</option>`
+
+                storyAssignee.innerHTML += `<option value="${indexCollaborateur}">${collaborators[indexCollaborateur]}</option>`
                 console.log(storyAssignee.innerHTML);
         }
 

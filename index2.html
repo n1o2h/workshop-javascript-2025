@@ -315,6 +315,7 @@
                 <h3>👤 Ajouter un Collaborateur</h3>
                 <div class="input-group">
                     <input type="text" id="collaboratorName" placeholder="Nom du collaborateur">
+                    <button onclick="addCollaborator(),updateAssigneeSelect()">Ajouter</button>
                     <button onclick="addCollaborator(),
         updateCollaboratorsList();
                 ">Ajouter</button>
@@ -390,6 +391,7 @@
          */
         function addCollaborator() {
             // À IMPLÉMENTER
+
         }
 
         /**
@@ -425,9 +427,18 @@
          * - Générer les options: une option "Non assigné" + une option par collaborateur
          * - Mettre à jour le select avec innerHTML
          */
-        
         function updateAssigneeSelect() {
             // À IMPLÉMENTER
+            var collaborators;
+            var  user ='lol';
+            var story=["mohamed",'lol','hi'];
+            
+            var storyAssignee=document.getElementById('storyAssignee');
+            story.forEach((k,i)=>{
+             storyAssignee.innerHTML+=`<option value="${i}">${story[i]}</option>`
+                console.log(storyAssignee.innerHTML);
+            })
+               
         }
 
         /**

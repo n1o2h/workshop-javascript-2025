@@ -316,6 +316,9 @@
                 <div class="input-group">
                     <input type="text" id="collaboratorName" placeholder="Nom du collaborateur">
                     <button onclick="addCollaborator(),updateAssigneeSelect()">Ajouter</button>
+                    <button onclick="addCollaborator(),
+        updateCollaboratorsList();
+                ">Ajouter</button>
                 </div>
                 <div id="collaboratorsList"></div>
             </div>
@@ -371,7 +374,7 @@
     </div>
 
     <script>
-        let collaborators = [];
+        let collaborators = ["nouhaila", "laila"];
         let userStories = [];
         let boardStories = [];
         let storyIdCounter = 1;
@@ -401,6 +404,19 @@
          */
         function updateCollaboratorsList() {
             // À IMPLÉMENTER
+            let collaboratorsList = document.getElementById("collaboratorsList");
+            // collaboratorsList = collaborators;
+            collaborators.forEach((collaborateur)  => {
+            let coll= document.createElement('span');
+            coll.style.background = "#667eea";
+            coll.style.color = "white";
+            coll.style.padding = "8px 15px";
+            coll.style.borderRadius = "20px";
+            coll.style.margin = "5px"
+            coll.innerText = collaborateur;
+            collaboratorsList.appendChild(coll);
+            console.log(collaboratorsList);
+            });
             
         }
 
@@ -411,7 +427,7 @@
          * - Générer les options: une option "Non assigné" + une option par collaborateur
          * - Mettre à jour le select avec innerHTML
          */
-        function updateAssigneeSelect() { 
+        function updateAssigneeSelect() {
             // À IMPLÉMENTER
             var storyAssignee=document.getElementById('storyAssignee');
             collaborators.forEach((k,i)=>{

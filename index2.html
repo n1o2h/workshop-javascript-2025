@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
 
@@ -64,7 +65,9 @@
             margin-bottom: 15px;
         }
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
             padding: 12px;
             border: 2px solid #ddd;
             border-radius: 8px;
@@ -72,12 +75,15 @@
             transition: border-color 0.3s;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus,
+        select:focus,
+        textarea:focus {
             outline: none;
             border-color: #667eea;
         }
 
-        input[type="text"], textarea {
+        input[type="text"],
+        textarea {
             flex: 1;
         }
 
@@ -155,7 +161,7 @@
             margin-bottom: 10px;
             border-radius: 8px;
             border-left: 4px solid #667eea;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .story-item strong {
@@ -224,14 +230,14 @@
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             cursor: move;
             transition: all 0.3s;
         }
 
         .card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .card h4 {
@@ -303,6 +309,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -315,9 +322,7 @@
                 <h3>👤 Ajouter un Collaborateur</h3>
                 <div class="input-group">
                     <input type="text" id="collaboratorName" placeholder="Nom du collaborateur">
-                    <button onclick="addCollaborator(),
-        updateCollaboratorsList();
-                ">Ajouter</button>
+                    <button onclick="addCollaborator()">Ajouter</button>
                 </div>
                 <div id="collaboratorsList"></div>
             </div>
@@ -373,12 +378,16 @@
     </div>
 
     <script>
-        let collaborators = ["nouhaila", "laila"];
+        let collaborators = [];
         let userStories = [];
         let boardStories = [];
         let storyIdCounter = 1;
+        let indexCollaborateur = 0;
+
+
 
         /**
+
          * Fonction pour ajouter un nouveau collaborateur à l'équipe
          * TODO: 
          * - Récupérer la valeur du champ input avec l'id 'collaboratorName'
@@ -390,7 +399,39 @@
          */
         function addCollaborator() {
             // À IMPLÉMENTER
+
+            let collaboratorName = document.getElementById("collaboratorName").value.trim();
+
+            if(collaboratorName != "" && !collaborators.includes(collaboratorName)){
+                collaborators.push(collaboratorName);
+                document.getElementById("collaboratorName").value = "";
+                console.log(collaborators)
+                updateCollaboratorsList();
+                updateAssigneeSelect();
+                index++;
+            // console.log(collaborators);
+            }
+            else{
+                document.getElementById("collaboratorName").value = "";
+            }
+            // if (collaboratorName != "" || !collaborators.includes(collaboratorName)) {
+            //     collaborators.push(collaboratorName)
+            //     document.getElementById("collaboratorName").value = "";
+            //     console.log(collaborators)
+            // } else {
+            //     if (collaboratorName == "" || collaborators.includes(collaboratorName)) {
+            //         let input = document.getElementById("collaboratorName").style.background = "red"
+
+            //     } else {
+            //         document.getElementById("collaboratorName").value = "";
+            //     }
+            // }
+            
+            
+
         }
+
+        addCollaborator()
 
         /**
          * Fonction pour afficher la liste des collaborateurs dans l'interface
@@ -404,18 +445,18 @@
             // À IMPLÉMENTER
             let collaboratorsList = document.getElementById("collaboratorsList");
             // collaboratorsList = collaborators;
-            collaborators.forEach((collaborateur)  => {
-            let coll= document.createElement('span');
-            coll.style.background = "#667eea";
-            coll.style.color = "white";
-            coll.style.padding = "8px 15px";
-            coll.style.borderRadius = "20px";
-            coll.style.margin = "5px"
-            coll.innerText = collaborateur;
-            collaboratorsList.appendChild(coll);
-            console.log(collaboratorsList);
-            });
-            
+                // collaborators.forEach((collaborateur) => {
+                // console.log(collaborateur);
+                let coll = document.createElement('span');
+                coll.style.background = "#667eea";
+                coll.style.color = "white";
+                coll.style.padding = "8px 15px";
+                coll.style.borderRadius = "20px";
+                coll.style.margin = "5px";
+                coll.innerText = collaborators[indexCollaborateur];
+                collaboratorsList.appendChild(coll);
+                // console.log(collaboratorsList);
+            // });
         }
 
         /**
@@ -425,9 +466,12 @@
          * - Générer les options: une option "Non assigné" + une option par collaborateur
          * - Mettre à jour le select avec innerHTML
          */
-        
         function updateAssigneeSelect() {
             // À IMPLÉMENTER
+            var storyAssignee = document.getElementById('storyAssignee');
+
+                storyAssignee.innerHTML += `<option value="${indexCollaborateur}">${collaborators[indexCollaborateur]}</option>`
+                console.log(storyAssignee.innerHTML);
         }
 
         /**
@@ -535,4 +579,5 @@
         renderBoard();
     </script>
 </body>
+
 </html>

@@ -345,7 +345,7 @@
                         <option value="">Non assigné</option>
                     </select>
                 </div>
-                <button onclick="addUserStory()">Créer Story</button>
+                <button onclick="addUserStory(),renderSprintBacklog()">Créer Story</button>
             </div>
         </div>
 
@@ -353,7 +353,6 @@
             <h2>📋 Sprint Backlog</h2>
             <div id="sprintBacklog"></div>
         </div>
-
         <div class="scrum-board">
             <h2>📊 SCRUM Board</h2>
             <div class="board-columns">
@@ -383,6 +382,7 @@
         let boardStories = [];
         let storyIdCounter = 1;
         let indexCollaborateur = 0;
+        var b=0;
 
 
 
@@ -408,7 +408,7 @@
                 console.log(collaborators)
                 updateCollaboratorsList();
                 updateAssigneeSelect();
-                index++;
+                indexCollaborateur++;
             // console.log(collaborators);
             }
             else{
@@ -501,6 +501,30 @@
          */
         function renderSprintBacklog() {
             // À IMPLÉMENTER
+            let sprintBacklog=document.getElementById('sprintBacklog');
+            let storySprint=document.getElementById('storySprint');
+            if (b==0){
+             for(var i=1;i<4;i++){
+
+                sprintBacklog.innerHTML+=`
+                <div class="sprint-container">
+                    <div class="sprint-header">
+                        <h3>Sprint ${i}</h3>
+                        <button class="start-sprint-btn" onclick="startSprint(${i})">
+                            Démarrer Sprint
+                            </button>
+                            </div>
+                            <div class="sprint-stories">`  
+                                
+                            }
+               b++;
+            }
+            
+
+            
+
+            
+
         }
 
         /**
@@ -515,6 +539,7 @@
          */
         function startSprint(sprintNum) {
             // À IMPLÉMENTER
+           
         }
 
         /**

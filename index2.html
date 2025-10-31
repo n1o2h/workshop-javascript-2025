@@ -413,14 +413,9 @@
          */
         function updateAssigneeSelect() { 
             // À IMPLÉMENTER
-            var collaborators;
-            var  user ='lol';
-            var story=["mohamed",'lol','hi'];
-            
             var storyAssignee=document.getElementById('storyAssignee');
-            story.forEach((k,i)=>{
-             storyAssignee.innerHTML+=`<option value="${i}">${story[i]}</option>`
-                console.log(storyAssignee.innerHTML);
+            collaborators.forEach((k,i)=>{
+             storyAssignee.innerHTML+=`<option value="${i}">${collaborators[i]}</option>`
             })
                
         }

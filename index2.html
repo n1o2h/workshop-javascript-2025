@@ -486,7 +486,30 @@
          */
         function addUserStory() {
             // À IMPLÉMENTER
+            let storyTitle = document.getElementById("storyTitle");
+            let  storyDescription = document.getElementById("storyDescription");
+            let storySprint= document.getElementById("storySprint"); //array
+            let storyAssignee = document.getElementById("storyAssignee"); //array
+            console.log(storySprint);
+
+            if(storyTitle.value != "" && storyDescription.value != ""){
+                // alert(storyDescription.value);
+                
+                let story = {
+                    id : storyIdCounter++,
+                    title : storyTitle.value,
+                    description : storyDescription.value,
+                    // sprint : storySprint,
+                    status : "backlog",
+                };
+                console.log(story);
+                storyDescription.value =""
+                storyTitle.value = "";
+
+            }
+
         }
+        addUserStory();
 
         /**
          * Fonction pour afficher le Sprint Backlog avec toutes les stories par sprint

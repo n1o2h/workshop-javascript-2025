@@ -379,7 +379,11 @@
         let boardStories = [];
         let storyIdCounter = 1;
 
+            
+
+       
         /**
+       
          * Fonction pour ajouter un nouveau collaborateur à l'équipe
          * TODO: 
          * - Récupérer la valeur du champ input avec l'id 'collaboratorName'
@@ -392,7 +396,29 @@
         function addCollaborator() {
             // À IMPLÉMENTER
 
+            let collaboratorName = document.getElementById("collaboratorName").value.trim();
+            let input;
+
+            // console.log(collaboratorName);
+             if(collaboratorName!="" && !collaborators.includes(collaboratorName)){
+                collaborators.push(collaboratorName)
+                document.getElementById("collaboratorName").value="";
+                console.log(collaborators)
+
+                updateCollaboratorsList();
+                updateAssigneeSelect();
+             }else{
+               if(collaboratorName ==""|| collaborators.includes(collaboratorName)){
+                 let input =document.getElementById("collaboratorName").style.background="red"
+                 
+               }else{
+                 document.getElementById("collaboratorName").value="";
+               }
+             }
+
         }
+
+        addCollaborator()
 
         /**
          * Fonction pour afficher la liste des collaborateurs dans l'interface
